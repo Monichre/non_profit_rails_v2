@@ -1,0 +1,27 @@
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+
+<% if @user.non_profits.any? %>
+<ul>
+  <% @user.non_profits.each do |non_profit| %>
+    <li><%= non_profit.name %></li>
+  <% end %>
+</ul>
+<% else %>
+
+<p>
+  You don't currently have any non profits
+</p>
+
+<% end %>
+
+<section>
+  <p>
+    <%= link_to "Edit your profile", edit_user_path(@user) %>
+  </p>
+  <p>
+    <%= link_to "Browse all our non profits", non_profits_path %>
+  </p>
+  <p>
+    <%= link_to "Browse non profits by category", categories_path %>
+  </p>
+</section>

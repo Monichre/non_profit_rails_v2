@@ -1,0 +1,25 @@
+<h1><%= @category.name %></h1>
+
+<% if @category.non_profits.any? %>
+<ul>
+  <% @category.non_profits.each do |non_profit| %>
+    <li><%= non_profit.name %></li>
+  <% end %>
+</ul>
+<% else %>
+
+<p>
+  No non profits in this category currently
+</p>
+
+<% end %>
+
+<section>
+    <%= link_to "Edit this category", edit_category_path(@category) %>
+
+
+    <%= link_to "Back to all non profits", non_profits_path %>
+
+    <%= link_to "Back to categories", categories_path %>
+
+</section>

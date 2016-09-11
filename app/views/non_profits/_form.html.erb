@@ -1,0 +1,10 @@
+<%= render "layouts/errors", :object => @non_profit %>
+<%= form_for @non_profit do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :encrypted_password %>
+  <%= f.text_field :encrypted_password %>
+  <%= f.submit  %>
+<% end %>
