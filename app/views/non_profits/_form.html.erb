@@ -4,7 +4,11 @@
   <%= f.text_field :name %>
   <%= f.label :email %>
   <%= f.text_field :email %>
-  <%= f.label :encrypted_password %>
-  <%= f.text_field :encrypted_password %>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <%= label_tag :category %>
+  <%= text_field_tag :category, params[:category] %>
+  <%= f.label :password %>
+  <%= f.text_field :password %>
   <%= f.submit  %>
 <% end %>

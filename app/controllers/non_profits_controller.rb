@@ -14,9 +14,15 @@ class NonProfitsController < ApplicationController
   ##I will want to reserve this route/#action for the Admin (me)
   def create
     @non_profit = NonProfit.new(non_profit_params)
+    category = nil
+    if !(params.values_at('category').empty?)
+      category = Category.create(name: params[:category])
+    end
+
     if @non_profit.save
       flash[:notice] = "Non Profit Successfully Added"
-      redirect_to non_profits_path
+      @non_profit.categories.push(category)
+      redirect_to non_profit_path(@non_profit)
     else
       flash[:notice] = "Something happened, Let's try that again."
       render :new
@@ -48,6 +54,6 @@ class NonProfitsController < ApplicationController
 
   private
   def non_profit_params()
-    params.require(:non_profit).permit(:name, :email, :password)
+    params.require(:non_profit).permit(:name, :email, :password, :category, :location)
   end
 end
